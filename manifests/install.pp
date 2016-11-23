@@ -16,7 +16,6 @@ class profile_puppetmaster::install {
 #    autosign_method  => 'file',
 #    autosign_domains => ['*.sub1.domain.com','*.sub2.domain.com'],
     require                    => Class['apache'],
-    java_ram                   => '1024',
     manage_hiera_eyaml_package => false,
   }
 }
