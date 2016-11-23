@@ -16,8 +16,9 @@ describe 'profile_puppetmaster' do
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('profile_puppetmaster') }
 
-          it { is_expected.to contain_class('profile_puppetmaster') }
-  
+          it { is_expected.to contain_class('profile_puppetmaster::install') }
+          it { is_expected.to contain_class('profile_puppetmaster::config') }
+          it { is_expected.to contain_class('profile_puppetmaster::service') }  
 
         end
       end

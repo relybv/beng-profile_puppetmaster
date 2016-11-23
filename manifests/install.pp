@@ -8,7 +8,13 @@ class profile_puppetmaster::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  package { $::profile_puppetmaster::package_name:
-    ensure => present,
+  class { '::apache':
+    mpm_module => 'worker',
+  }
+
+  class { '::puppet::profile::master':
+#    autosign_method  => 'file',
+#    autosign_domains => ['*.sub1.domain.com','*.sub2.domain.com'],
+    require => Class['apache'],
   }
 }

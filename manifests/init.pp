@@ -9,5 +9,8 @@
 #
 class profile_puppetmaster
 {
-  # a profile class includes one or more classes, please include below
+  class { '::profile_puppetmaster::install': } ->
+  class { '::profile_puppetmaster::config': } ~>
+  class { '::profile_puppetmaster::service': } ->
+  Class['::profile_puppetmaster']
 }
