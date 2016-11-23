@@ -15,6 +15,7 @@ class profile_puppetmaster::install {
   class { '::puppet::profile::master':
 #    autosign_method  => 'file',
 #    autosign_domains => ['*.sub1.domain.com','*.sub2.domain.com'],
-    require => Class['apache'],
+    require  => Class['apache'],
+    java_ram => '1024',
   }
 }
