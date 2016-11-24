@@ -11,6 +11,9 @@ class profile_puppetmaster::install {
 #  class { '::apache':
 #    mpm_module => 'worker',
 #  }
+  group { 'puppet':
+    ensure => present,
+  }
 
   class { '::puppet::profile::master':
 #    autosign_method  => 'file',
@@ -18,5 +21,6 @@ class profile_puppetmaster::install {
 #    require                    => Class['apache'],
     server_type                => 'puppetserver',
     manage_hiera_eyaml_package => false,
+    require                    => Group['puppet'],
   }
 }
