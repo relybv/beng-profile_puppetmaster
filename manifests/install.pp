@@ -8,19 +8,23 @@ class profile_puppetmaster::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-#  class { '::apache':
-#    mpm_module => 'worker',
-#  }
-  group { 'puppet':
-    ensure => present,
-  }
-
   class { '::puppet::profile::master':
-#    autosign_method  => 'file',
-#    autosign_domains => ['*.sub1.domain.com','*.sub2.domain.com'],
-#    require                    => Class['apache'],
     server_type                => 'puppetserver',
     manage_hiera_eyaml_package => false,
-    require                    => Group['puppet'],
   }
+
+
+  if ( versioncmp($::puppetversion, '4.0.0') >= 0 ) {
+    $puppetconfdir = '/etc/puppetlabs/puppet'
+  } else {
+    $puppetconfdir = '/etc/puppet'
+  }
+
+  ini_setting { 'master dns_alt_names':
+      ensure  => present,
+      path    => "${puppetconfdir}/puppet.conf",
+      section => 'main',
+      setting => 'dns_alt_names',
+      value   => "puppet.${::domain}",
+    }
 }
