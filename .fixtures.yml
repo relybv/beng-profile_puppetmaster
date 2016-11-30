@@ -6,7 +6,6 @@ fixtures:
 
 # profile module layout, default include ntp module
     ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
-    rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
     puppet: "https://github.com/abstractitptyltd/abstractit-puppet.git"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
     apt: "https://github.com/puppetlabs/puppetlabs-apt.git"
