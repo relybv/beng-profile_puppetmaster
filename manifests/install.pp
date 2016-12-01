@@ -10,6 +10,7 @@ class profile_puppetmaster::install {
 
   class { '::puppet::profile::master':
     server_type                => 'puppetserver',
+    puppetdb                   => true,
     manage_hiera_eyaml_package => false,
   }
 
