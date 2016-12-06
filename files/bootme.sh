@@ -65,7 +65,12 @@ echo "Preparing modules"
 /opt/puppetlabs/puppet/bin/rake spec_prep
 
 # copy to puppet module location
+if [ -d $MODULEDIR ]; then
 cp -a /root/profile_puppetmaster/spec/fixtures/modules/* $MODULEDIR
+else
+mkdir $MODULEDIR
+cp -a /root/profile_puppetmaster/spec/fixtures/modules/* $MODULEDIR
+fi
 
 echo "Run puppet apply"
 /usr/local/bin/puppet apply -e "include profile_puppetmaster"
