@@ -23,10 +23,14 @@ class profile_puppetmaster::config {
     source => 'puppet:///modules/profile_puppetmaster/site.pp',
   }
 
-  # define roles
+  # define roles, a role is set by a custom fact in the profile_base module
   file { '/etc/puppetlabs/code/environments/production/manifests/role':
     recurse => true,
     source  => 'puppet:///modules/profile_puppetmaster/role',
   }
 
+  # /etc/puppetlabs/code/hieradata/production/global.yaml
+  file { '/etc/puppetlabs/code/hieradata/production/global.yaml':
+    source => 'puppet:///modules/profile_puppetmaster/global.yaml',
+  } 
 }
