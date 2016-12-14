@@ -3,7 +3,19 @@ classes:
 profile_base::tcp_9300_source1: false
 profile_base::tcp_9300_source2: false
 profile_base::tcp_9300_source3: false
+profile_base::tcp_rangea_src1: false
+profile_base::tcp_rangea_src2: false
+profile_base::tcp_rangea_src3: false
 profile_base::tcp_public_ports: false
+profile_base::tcp_rangea_ports: false
+profile_base::tcp_extra_rule1: false
+profile_base::tcp_extra_rule1_dport: false
+profile_base::tcp_extra_rule1_source: false
+profile_base::tcp_rangeb: '8080-8095'
+profile_base::tcp_rangc: '8011-8015'
+profile_base::internal_neta: '172.18.0.0/16'
+profile_base::internal_netb: '172.19.0.0/16'
+profile_base::internal_netc: '178.249.248.128/25'
 profile_base::tcp_ports_global:
   - 20
   - 21
@@ -18,3 +30,10 @@ profile_base::tcp_ports_global:
   - 9200
   - 13720
   - 13724
+profile_base::udp_ports:
+  - 53
+  - 123
+  - 161
+profile_base::ntpservers:
+  - '172.18.99.210'
+  - '172.18.99.211'
