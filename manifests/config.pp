@@ -8,4 +8,25 @@ class profile_puppetmaster::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  # prepare directorys
+  exec { '/bin/mkdir -p -p /etc/puppetlabs/code/hieradata/production/':
+    creates => '/etc/puppetlabs/code/hieradata/production/',
+  }
+
+  file { [ '/etc/puppetlabs/code/hieradata/production/node/', '/etc/puppetlabs/code/hieradata/production/role/', '/etc/puppetlabs/code/hieradata/production/env/' ]:
+    ensure  => directory,
+    require => Exec[ '/bin/mkdir -p -p /etc/puppetlabs/code/hieradata/production/' ],
+  }
+
+  # site.pp only contain hiera_include('classes', [])
+  file { '/etc/puppetlabs/code/environments/production/manifests/site.pp':
+    source => 'puppet:///modules/profile_puppetmaster/site.pp',
+  }
+
+  # define roles
+  file { '/etc/puppetlabs/code/environments/production/manifests/role':
+    recurse => true,
+    source  => 'puppet:///modules/profile_puppetmaster/role',
+  }
+
 }

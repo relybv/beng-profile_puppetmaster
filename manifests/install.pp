@@ -12,6 +12,7 @@ class profile_puppetmaster::install {
     server_type                => 'puppetserver',
     puppetdb                   => true,
     manage_hiera_eyaml_package => false,
+    hiera_hierarchy            => [ 'node/%{::clientcert}',  'role/%{::role}', 'env/%{::environment}', 'global' ],
   }
 
 
