@@ -27,6 +27,6 @@ class profile_puppetmaster::install {
       path    => "${puppetconfdir}/puppet.conf",
       section => 'main',
       setting => 'dns_alt_names',
-      value   => "puppet.${::domain}",
+      value   => "puppet.${::domain}, puppet",
     }
 }
