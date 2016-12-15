@@ -1,0 +1,5 @@
+classes:
+  - profile_base
+profile_base::tcp_9300_source1: '172.19.60.0/24'
+profile_base::tcp_9300_source2: false
+profile_base::tcp_9300_source3: false

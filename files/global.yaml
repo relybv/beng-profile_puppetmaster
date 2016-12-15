@@ -12,7 +12,7 @@ profile_base::tcp_extra_rule1: false
 profile_base::tcp_extra_rule1_dport: false
 profile_base::tcp_extra_rule1_source: false
 profile_base::tcp_rangeb: '8080-8095'
-profile_base::tcp_rangc: '8011-8015'
+profile_base::tcp_rangec: '8011-8015'
 profile_base::internal_neta: '172.18.0.0/16'
 profile_base::internal_netb: '172.19.0.0/16'
 profile_base::internal_netc: '178.249.248.128/25'
