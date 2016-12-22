@@ -29,6 +29,12 @@ class profile_puppetmaster::config {
     source  => 'puppet:///modules/profile_puppetmaster/role',
   }
 
+  # define nodes
+  file { '/etc/puppetlabs/code/environments/production/manifests/node':
+    recurse => true,
+    source  => 'puppet:///modules/profile_puppetmaster/node',
+  }
+
   # /etc/puppetlabs/code/hieradata/production/global.yaml
   file { '/etc/puppetlabs/code/hieradata/production/global.yaml':
     source => 'puppet:///modules/profile_puppetmaster/global.yaml',
