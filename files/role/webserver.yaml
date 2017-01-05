@@ -1,1 +1,4 @@
-
+classes:
+  - profile_base
+ profile_base::tcp_public_ports = [ '80','443' ]
+    
