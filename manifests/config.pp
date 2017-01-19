@@ -38,5 +38,5 @@ class profile_puppetmaster::config {
   # /etc/puppetlabs/code/hieradata/production/global.yaml
   file { '/etc/puppetlabs/code/hieradata/production/global.yaml':
     source => 'puppet:///modules/profile_puppetmaster/global.yaml',
-  } 
+  }
 }
