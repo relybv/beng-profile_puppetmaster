@@ -9,7 +9,7 @@
 #
 class profile_puppetmaster
 {
-  group { 'puppet': }
+  ensure_resource('group', 'puppet', {'ensure' => 'present'})
   class { '::profile_puppetmaster::install': } ->
   class { '::profile_puppetmaster::config':
     notify => Service[ 'puppetserver' ],
