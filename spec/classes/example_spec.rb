@@ -21,6 +21,18 @@ describe 'profile_puppetmaster' do
           it { is_expected.to contain_class('profile_puppetmaster::service') }  
 
           it { is_expected.to contain_group('puppet') }
+
+          it { is_expected.to contain_exec('/bin/mkdir -p -p /etc/puppetlabs/code/hieradata/production/') }
+
+          it { is_expected.to contain_file('/etc/puppetlabs/code/environments/production/manifests/node') }
+          it { is_expected.to contain_file('/etc/puppetlabs/code/environments/production/manifests/role') }
+          it { is_expected.to contain_file('/etc/puppetlabs/code/environments/production/manifests/site.pp') }
+          it { is_expected.to contain_file('/etc/puppetlabs/code/hieradata/production/env/') }
+          it { is_expected.to contain_file('/etc/puppetlabs/code/hieradata/production/global.yaml') }
+          it { is_expected.to contain_file('/etc/puppetlabs/code/hieradata/production/node/') }
+          it { is_expected.to contain_file('/etc/puppetlabs/code/hieradata/production/role/') }
+
+          it { is_expected.to contain_Ini_setting('master dns_alt_names') }
         end
       end
     end
