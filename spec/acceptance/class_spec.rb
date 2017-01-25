@@ -36,5 +36,19 @@ describe 'profile_puppetmaster class' do
       it { should be_listening }
     end
 
+    describe package('puppetdb') do
+      it { is_expected.to be_installed }
+    end
+
+    describe service('puppetdb') do
+      it { is_expected.to be_enabled }
+      it { is_expected.to be_running }
+    end
+
+    describe port(8081) do
+      it { should be_listening }
+    end
+
+
   end
 end
