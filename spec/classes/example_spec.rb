@@ -20,6 +20,7 @@ describe 'profile_puppetmaster' do
           it { is_expected.to contain_class('profile_puppetmaster::config') }
           it { is_expected.to contain_class('profile_puppetmaster::service') }  
 
+          it { is_expected.to contain_group('puppet') }
         end
       end
     end

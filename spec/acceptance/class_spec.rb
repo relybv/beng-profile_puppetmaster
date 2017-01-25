@@ -49,11 +49,11 @@ describe 'profile_puppetmaster class' do
       it { should be_listening }
     end
 
-    describe package('postgresql') do
+    describe package('postgresqld') do
       it { is_expected.to be_installed }
     end
 
-    describe service('postgresql') do
+    describe service('postgresqld') do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
