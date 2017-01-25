@@ -9,6 +9,7 @@
 #
 class profile_puppetmaster
 {
+  group { 'puppet': }
   class { '::profile_puppetmaster::install': } ->
   class { '::profile_puppetmaster::config':
     notify => Service[ 'puppetserver' ],
