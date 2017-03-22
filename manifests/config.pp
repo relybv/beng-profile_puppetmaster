@@ -13,10 +13,10 @@ class profile_puppetmaster::config {
     creates => '/etc/puppetlabs/code/hieradata/production/',
   }
 
-  file { [ '/etc/puppetlabs/code/hieradata/production/node/', '/etc/puppetlabs/code/hieradata/production/role/', '/etc/puppetlabs/code/hieradata/production/env/' ]:
-    ensure  => directory,
-    require => Exec[ '/bin/mkdir -p -p /etc/puppetlabs/code/hieradata/production/' ],
-  }
+#  file { [ '/etc/puppetlabs/code/hieradata/production/node/', '/etc/puppetlabs/code/hieradata/production/role/', '/etc/puppetlabs/code/hieradata/production/env/' ]:
+#    ensure  => directory,
+#    require => Exec[ '/bin/mkdir -p -p /etc/puppetlabs/code/hieradata/production/' ],
+#  }
 
   # site.pp only contain hiera_include('classes', [])
   file { '/etc/puppetlabs/code/environments/production/manifests/site.pp':
@@ -24,13 +24,13 @@ class profile_puppetmaster::config {
   }
 
   # define roles, a role is set by a custom fact in the profile_base module
-  file { '/etc/puppetlabs/code/environments/production/manifests/role':
+  file { '/etc/puppetlabs/code/hieradata/production/role':
     recurse => true,
     source  => 'puppet:///modules/profile_puppetmaster/role',
   }
 
   # define nodes
-  file { '/etc/puppetlabs/code/environments/production/manifests/node':
+  file { '/etc/puppetlabs/code/hieradata/production/node':
     recurse => true,
     source  => 'puppet:///modules/profile_puppetmaster/node',
   }
