@@ -13,11 +13,6 @@ class profile_puppetmaster::config {
     creates => '/etc/puppetlabs/code/hieradata/production/',
   }
 
-#  file { [ '/etc/puppetlabs/code/hieradata/production/node/', '/etc/puppetlabs/code/hieradata/production/role/', '/etc/puppetlabs/code/hieradata/production/env/' ]:
-#    ensure  => directory,
-#    require => Exec[ '/bin/mkdir -p -p /etc/puppetlabs/code/hieradata/production/' ],
-#  }
-
   # site.pp only contain hiera_include('classes', [])
   file { '/etc/puppetlabs/code/environments/production/manifests/site.pp':
     source => 'puppet:///modules/profile_puppetmaster/site.pp',
