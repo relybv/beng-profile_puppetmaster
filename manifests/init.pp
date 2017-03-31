@@ -10,10 +10,10 @@
 class profile_puppetmaster
 {
   ensure_resource('group', 'puppet', {'ensure' => 'present'})
-  class { '::profile_puppetmaster::install': } ->
-  class { '::profile_puppetmaster::config':
+  class { '::profile_puppetmaster::install': }
+  -> class { '::profile_puppetmaster::config':
     notify => Service[ 'puppetserver' ],
-  } ~>
-  class { '::profile_puppetmaster::service': } ->
-  Class['::profile_puppetmaster']
+  }
+  ~> class { '::profile_puppetmaster::service': }
+  -> Class['::profile_puppetmaster']
 }
