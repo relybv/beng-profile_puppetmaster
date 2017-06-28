@@ -8,11 +8,16 @@ class profile_puppetmaster::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  package { 'ruby':
+    ensure => installed,
+  }
+
   class { '::puppet::profile::master':
     server_type                => 'puppetserver',
     puppetdb                   => true,
     manage_hiera_eyaml_package => false,
     hiera_hierarchy            => [ 'node/%{::clientcert}',  'role/%{::role}', 'env/%{::environment}', 'global' ],
+    require                    => Package['ruby'],
   }
 
 
